@@ -14,6 +14,8 @@ dotenv.config();
 
 import express from "express";
 import cors from "cors";
+// importar rota nova
+import chatRouter from "./src/routes/chat.routes.js";
 
 // 3. instanciar o app
 
@@ -26,9 +28,13 @@ app.use(cors());
 
 // 5. rotas (você vai registrar aqui quando criar os arquivos de rota)
 
+/*
 app.get('/', (req, res) => {
     res.json({message: 'api funcionando'});
 })
+*/
+
+app.use('/api', chatRouter);
 
 // 6. app.listens
 

@@ -1,0 +1,19 @@
+// 1. importar Router do express
+
+import { Router } from "express";
+
+// 2. importar chatController do controller
+
+import { chatController } from "../controllers/chat.controller.js";
+
+// 3. criar o router
+
+const router = Router();
+
+// 4. definir a rota POST /chat apontando pro chatController
+
+router.post('/chat', chatController);
+
+// 5. exportar o router
+
+export default router;
