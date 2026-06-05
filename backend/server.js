@@ -18,6 +18,8 @@ import cors from "cors";
 import chatRouter from "./src/routes/chat.routes.js";
 // importar rota nova
 import uploadRouter from "./src/routes/upload.routes.js"
+// importar rota nova
+import ticketRouter from "./src/routes/ticket.routes.js"
 
 // 3. instanciar o app
 
@@ -37,7 +39,8 @@ app.get('/', (req, res) => {
 */
 
 app.use('/api', chatRouter);
-app.use('/api', uploadRouter)
+app.use('/api', uploadRouter);
+app.use('/api', ticketRouter);
 
 // 6. app.listens
 
