@@ -2,9 +2,9 @@
 
 import { Router } from "express";
 
-// 2. importar ticketController do controller
+// 2. importar ticketController do controller e novo getTicketsController e novo updateTicketStatusController
 
-import { ticketController } from "../controllers/ticket.controller.js";
+import { ticketController, getTicketsController, updateTicketStatusController } from "../controllers/ticket.controller.js";
 
 // 3. criar o router
 
@@ -13,6 +13,8 @@ const router = Router();
 // 4. definir a rota POST /ticket apontando pro ticketController
 
 router.post('/tickets', ticketController);
+router.get('/tickets', getTicketsController);
+router.patch('/tickets/:id', updateTicketStatusController);
 
 // 5. exportar o router
 

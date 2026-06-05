@@ -37,22 +37,22 @@ Quando o usuário confirmar, inclua ao final da sua mensagem o seguinte JSON (se
 
 export async function sendMessage(message, history) {
 
-    //    4.1 montar o array de mensagens: [system, ...history, nova mensagem]
+//    4.1 montar o array de mensagens: [system, ...history, nova mensagem]
 
-    const messages = [
-        {role: 'system', content: systemPrompt},
-        ...history,
-        {role: 'user', content: message}
-    ];
+const messages = [
+    {role: 'system', content: systemPrompt},
+    ...history,
+    {role: 'user', content: message}
+];
 
-    //    4.2 chamar groq.chat.completions.create(...)
+//    4.2 chamar groq.chat.completions.create(...)
 
-    const completion = await groq.chat.completions.create({
-        messages: messages,
-        model: 'llama-3.3-70b-versatile'
-    });
+const completion = await groq.chat.completions.create({
+    messages: messages,
+    model: 'llama-3.3-70b-versatile'
+});
 
-    //    4.3 retornar o texto da resposta
+//    4.3 retornar o texto da resposta
 
-    return completion.choices[0].message.content;
+return completion.choices[0].message.content;
 }
