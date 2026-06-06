@@ -1,27 +1,20 @@
-// 1. importar o client do Supabase
-
 import supabaseClient from "../config/supabase.js";
 
-// 2. exportar função uploadImage(file)
 export async function uploadImage(file) {
+    const caminho = `${Date.now()}_${file.originalname}`;
+    
+    const { data, error } = await supabaseClient.storage
+        .from('tickets-image')
+        .upload(caminho, file.buffer, { contentType: file.mimetype });
 
-// 2.1 montar o caminho único do arquivo usando Date.now() e file.originalname
+    console.log('upload data:', data);
+    console.log('upload error:', error);
 
-const caminho = `${Date.now()}_${file.originalname}`;
-// 2.2 fazer upload pro Supabase Storage com supabase.storage.from().upload()
+    if (error) throw error;
 
-await supabaseClient.storage
-.from('tickets-image').
-upload(
-    caminho, file.buffer, {contentType: file.mimetype}
-);
-// 2.3 montar a URL pública com supabase.storage.from().getPublicUrl()
+    const { data: urlData } = supabaseClient.storage
+        .from('tickets-image')
+        .getPublicUrl(caminho);
 
-const { data } = supabaseClient.storage
-.from('tickets-image')
-.getPublicUrl(caminho);
-
-// 2.4 retornar a URL pública
-
-return data.publicUrl;
+    return urlData.publicUrl;
 }
