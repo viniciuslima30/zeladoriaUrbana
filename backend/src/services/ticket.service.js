@@ -8,6 +8,7 @@ Retornar o ticket criado
 // 1. importar o client do Supabase
 
 import supabaseClient from "../config/supabase.js";
+import { sendStatusEmail } from "./email.service.js";
 
 // 2. exportar função createTicket(dados)
 
@@ -44,13 +45,15 @@ export async function getTickets() {
 
 export async function updateTicketStatus(id, status) {
     const { data, error } = await supabaseClient
-    .from('tickets')
-    .update({ status })
-    .eq('id', id)
-    .select()
-    .single();
+        .from('tickets')
+        .update({ status })
+        .eq('id', id)
+        .select()
+        .single();
 
     if (error) throw error;
+
+    await sendStatusEmail(data); // envia email com o ticket atualizado
 
     return data;
 }
