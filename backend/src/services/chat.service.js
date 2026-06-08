@@ -31,7 +31,7 @@ REGRAS OBRIGATÓRIAS:
 - Validação de email: deve conter @ e um domínio. Se inválido, peça novamente.
 - Após coletar a descrição, diga: "Você pode anexar uma foto usando o ícone de clipe no canto inferior esquerdo. Se não quiser, responda 'sem foto'."
 - Aguarde a mensagem "[IMAGEM ANEXADA COM SUCESSO]" ou "sem foto" antes de continuar.
-- Após receber a foto ou "sem foto", mostre o resumo completo ponto final e pergunte se está correto.
+- Após receber a foto ou "sem foto", mostre o resumo completo ponto final (.) no resumo e pergunte se está correto.
 - Inclua o JSON SOMENTE após o usuário confirmar com "sim", "correto", "pode enviar" ou similar.
 - NUNCA inclua o JSON antes da confirmação explícita.
 

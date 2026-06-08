@@ -34,7 +34,12 @@ export default function Chat() {
             const dados = JSON.parse(match[0]);
             delete dados.coletado;
             if (imageUrlRef.current) dados.image_url = imageUrlRef.current;
-            await api.post('/api/tickets', dados);
+            const ticketRes = await api.post('/api/tickets', dados);
+            const protocolo = ticketRes.data.resposta.id;
+            setMessages(prev => [...prev, { 
+                role: 'assistant', 
+                content: `✅ Chamado registrado! Seu protocolo é: ${protocolo}` 
+            }]);
             setTicketSalvo(true);
         }
 
@@ -75,6 +80,7 @@ export default function Chat() {
     setLoading(true);
 
     // avisa a IA que a imagem foi enviada
+
     try {
         const chatRes = await api.post('/api/chat', {
             message: msgImagem,
@@ -82,12 +88,12 @@ export default function Chat() {
         });
         const resposta = chatRes.data.resposta;
         setMessages(prev => [...prev, { role: 'assistant', content: resposta }]);
-    } catch (err) {
-        console.error(err);
-    } finally {
-        setLoading(false);
+        } catch (err) {
+            console.error(err);
+        } finally {
+            setLoading(false);
+        }
     }
-}
     
     // return com o JSX
 

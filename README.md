@@ -10,8 +10,8 @@ Plataforma web de zeladoria urbana onde cidadãos podem registrar problemas urba
 - **Upload de imagem** para anexar foto do problema reportado
 - **Geração automática de protocolo** para cada chamado registrado
 - **Classificação automática** do problema por categoria via IA (buraco, poste, lixo, vazamento, árvore)
-- **Painel administrativo** protegido por senha para visualizar chamados, imagens, alterar status e deletar pedidos já resolvidos
-- **Notificação por email** automática ao cidadão quando o status do chamado é atualizado
+- **Painel administrativo** protegido por senha para visualizar chamados, imagens, alterar status e deletar pedidos já resolvidos. É acompanhado de um dashbord para vizualizar pedidos
+- **Notificação por email** automática ao cidadão no momento da criação e quando o status do chamado é atualizado
 
 ## Tecnologias
 
