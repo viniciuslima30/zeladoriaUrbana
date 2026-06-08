@@ -82,7 +82,7 @@ export default function Admin() {
                 <span className="text-slate-400 text-sm">{tickets.length} chamados</span>
             </div>
 
-            <div className="grid grid-cols-4 gap-4 mb-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
                 <div className="bg-white/5 border border-white/10 rounded-xl p-4">
                     <p className="text-slate-400 text-xs mb-1">Total</p>
                     <p className="text-white text-2xl font-medium">{total}</p>
@@ -126,7 +126,7 @@ export default function Admin() {
 
                         <p className="text-slate-300 text-sm mb-3">{ticket.description}</p>
 
-                        <div className="flex gap-4 text-xs text-slate-500 mb-3">
+                        <div className="flex flex-wrap gap-2 text-xs text-slate-500 mb-3">
                             <span>{ticket.category}</span>
                             <span>{ticket.user_phone}</span>
                             <span>{ticket.user_email}</span>
@@ -142,7 +142,7 @@ export default function Admin() {
                             <p className="text-white text-xs mb-3 ">Sem foto</p>
                         )}
 
-                        <div className="flex gap-2">
+                        <div className="flex flex-wrap gap-2">
                             <button onClick={() => updateStatus(ticket.id, 'aberto')} className="text-xs px-3 py-1 rounded-lg border border-white/10 text-slate-400 hover:text-white">Aberto</button>
                             <button onClick={() => updateStatus(ticket.id, 'em_andamento')} className="text-xs px-3 py-1 rounded-lg border border-white/10 text-slate-400 hover:text-white">Em andamento</button>
                             <button onClick={() => updateStatus(ticket.id, 'resolvido')} className="text-xs px-3 py-1 rounded-lg border border-white/10 text-slate-400 hover:text-white">Resolvido</button>
