@@ -15,7 +15,7 @@ export default function Home() {
         <div className="min-h-screen bg-[#0f172a] flex flex-col items-center justify-center text-center px-6">
             
             {/* badge */}
-            <span className="bg-green-500/15 border border-green-500/30 text-green-400 text-sm px-4 py-1 rounded-full mb-8 flex">
+            <span className="bg-green-500/15 border border-green-500/30 text-green-400 text-sm px-4 py-1 rounded-full mb-8 flex m-2">
                 <IconMapPin size={18}/>Plataforma de zeladoria urbana
             </span>
 
@@ -44,7 +44,7 @@ export default function Home() {
                 ))}
             </div>
 
-            <div className="text-slate-400 flex gap-2">
+            <div className="text-slate-400 flex gap-2 m-2">
                 <div>Powered by AI Groq</div>
                 <div>| Gratuito |</div>
                 <div>Resposta rápida</div>
