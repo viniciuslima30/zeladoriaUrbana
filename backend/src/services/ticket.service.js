@@ -57,3 +57,14 @@ export async function updateTicketStatus(id, status) {
 
     return data;
 }
+
+// deletar pedido
+
+export async function deleteTicket(id) {
+    const { error } = await supabaseClient
+    .from('tickets')
+    .delete()
+    .eq('id', id);
+
+    if (error) throw error;
+}

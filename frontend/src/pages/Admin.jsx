@@ -24,6 +24,11 @@ export default function Admin() {
             fetchTickets();
     }
 
+    async function deleteTicket(id) {
+        await api.delete(`/api/tickets/${id}`);
+        fetchTickets();
+    }
+
     function login() {
         if (senha === 'admin123') {
             setAutenticado(true);
@@ -86,6 +91,15 @@ export default function Admin() {
                                 {ticket.status}
                             </span>
                         </div>
+
+                        {ticket.status === 'resolvido' && (
+                            <button 
+                                onClick={() => deleteTicket(ticket.id)} 
+                                className="text-xs px-3 py-1 rounded-lg border border-red-500/30 text-red-400 hover:text-red-300 mb-2"
+                            >
+                                Deletar chamado
+                            </button>
+                        )}
 
                         <p className="text-slate-300 text-sm mb-3">{ticket.description}</p>
 

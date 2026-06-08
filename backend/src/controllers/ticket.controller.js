@@ -1,6 +1,6 @@
-// 1. importar createTicket do service e novo getTickets e novo updateTicketStatus
+// 1. importar createTicket do service e novo getTickets e novo updateTicketStatus e novo deleteTicket
 
-import { createTicket, getTickets, updateTicketStatus } from "../services/ticket.service.js";
+import { createTicket, getTickets, updateTicketStatus, deleteTicket } from "../services/ticket.service.js";
 
 // 2. exportar função ticketController(req, res)
 
@@ -43,5 +43,16 @@ export async function updateTicketStatusController(req, res) {
     } catch (err) {
         console.error(err);
         res.status(404).json({erro: 'id ou status não encontrado'});
+    }
+}
+
+export async function deleteTicketController(req, res) {
+    try {
+        const { id } = req.params;
+        await deleteTicket(id);
+        res.json({ message: 'Ticket deletado com sucesso' });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ erro: 'Erro ao deletar ticket' });
     }
 }
