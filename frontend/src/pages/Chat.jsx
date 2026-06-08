@@ -5,7 +5,12 @@ import { IconArrowLeft, IconPaperclip, IconSend } from "@tabler/icons-react";
 
 export default function Chat() {
 
-    const [messages, setMessages] = useState([]);
+    const [messages, setMessages] = useState([
+        {
+            role: 'assistant',
+            content: 'Olá! Sou a Zela, assistente virtual da Zeladoria Urbana. Estou aqui para registrar sua reclamação sobre problemas urbanos como buracos, postes apagados, vazamentos e muito mais. Para começar, qual é o seu nome completo?'
+        }
+    ]);
     const [input, setInput] = useState("");
     const [loading, setLoading] = useState(false);
     const [imageUrl, setImageUrl] = useState(null);

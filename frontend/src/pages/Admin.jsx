@@ -28,6 +28,7 @@ export default function Admin() {
         if (senha === 'admin123') {
             setAutenticado(true);
         } else {
+            setSenha('');
             alert('Senha incorreta');
         }
     }
@@ -36,7 +37,12 @@ export default function Admin() {
         return (
             <div className="min-h-screen bg-[#0f172a] flex items-center justify-center">
                 <div className="bg-white/5 border border-white/10 rounded-xl p-8 flex flex-col gap-4 w-80">
-                    <h1 className="text-white text-xl font-medium">Acesso Admin</h1>
+                    <div className="flex items-center gap-2 mb-2">
+                        <Link to="/" className="text-slate-400 hover:text-white">
+                            <IconArrowLeft size={18}/>
+                        </Link>
+                        <h1 className="text-white text-xl font-medium">Acesso Admin</h1>
+                    </div>
                     <input
                         type="password"
                         placeholder="Senha"
@@ -90,9 +96,13 @@ export default function Admin() {
                             <span>{new Date(ticket.created_at).toLocaleDateString('pt-BR')}</span>
                         </div>
 
-                        <a href={ticket.image_url} target="_blank" rel="noreferrer">
-                            <img src={ticket.image_url} className="w-40 h-40 object-cover rounded-lg mb-3 cursor-pointer hover:opacity-80"/>
-                        </a>
+                        {ticket.image_url ? (
+                            <a href={ticket.image_url} target="_blank" rel="noreferrer">
+                                <img src={ticket.image_url} className="w-40 h-40 object-cover rounded-lg mb-3 cursor-pointer hover:opacity-80"/>
+                            </a>
+                                ) : (
+                            <p className="text-white text-xs mb-3 ">Sem foto</p>
+                        )}
 
                         <div className="flex gap-2">
                             <button onClick={() => updateStatus(ticket.id, 'aberto')} className="text-xs px-3 py-1 rounded-lg border border-white/10 text-slate-400 hover:text-white">Aberto</button>
